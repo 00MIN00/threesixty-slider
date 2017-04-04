@@ -41,7 +41,8 @@
    *        ext: '.jpg',
    *        height: 265,
    *        width: 400,
-   *        navigation: true
+   *        navigation: true,
+   *        imgIcon: '.threesixty_icon'
    *      });
    * **Note:** There are loads other options that you can override to customize
    * this plugin.
@@ -132,6 +133,7 @@
       });
       base.$el.find(AppConfig.progress).fadeIn('slow');
       base.$el.find(AppConfig.imgList).hide();
+      base.$el.find(AppConfig.imgIcon).hide();
     };
 
     /**
@@ -174,6 +176,7 @@
           $(this).hide();
           base.showImages();
           base.showNavigation();
+          base.showIcon();
         });
       } else {
         base.loadImages();
@@ -256,6 +259,14 @@
         AppConfig.navigation_init = true;
       }
     };
+
+    /**
+     * @method showIcon
+     * Creates a icon panel on images slider
+     */
+    base.showIcon = function() {
+      base.$el.find(AppConfig.imgIcon).fadeIn();
+    }
 
     /**
      * @method play_stop
@@ -865,7 +876,12 @@
       * @cfg {Number} playSpeed
       * Value to control the speed of play button rotation
       */
-      playSpeed: 100
+      playSpeed: 100,
+       /**
+       * @cfg {String} imgIcon
+       * Set icon element on image slider
+       */
+      imgIcon: '.threesixty_icon'
     };
     base.init();
   };
